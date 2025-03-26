@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unionplus</title>
+    <link type="text/css" href="{% static 'mods/css/styles.css' %}" rel="stylesheet"/>
+
+</head>
+<body>
+
+<div style="position: absolute; z-index: 100; padding: 10px"><a href="{% url 'home' %}"><img src="{% static 'mods/images/logo.png' %}" alt="Union plus" style="width: 200px; float=rigth; position: absolute; rigth: 20px;"></a></div>
+
+<header>
+    <ul style="text-align: right; font-size: 18px; padding: 5px; margin: 50px">
+    <li style="display: inline-block"><strong><a href="{% url 'home' %}">На главную</a></strong></li>
+    <li style="display: inline-block"><strong><a href="{% url 'about' %}">О сайте</a></strong></li>
+    <li style="display: inline-block"><strong>Вход</strong></li>
+    <li style="display: inline-block"><strong><a href="{% url 'create' %}">Добавить статью</a></strong></li>
+    </ul>
+</header>
+
+<div class="container">
+    <div class="sidebar">
+        {% block leftbar %}
+        {% for c in cats %}
+        <p>{{ c.title }}</p>
+        {% endfor %}
+        {% endblock %}
+    </div>
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+<footer>
+    Все права защищены
+</footer>
+
+</body>
+</html>

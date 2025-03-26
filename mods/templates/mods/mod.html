@@ -1,0 +1,9 @@
+{% extends 'mods/base.html' %}
+{% block content %}
+<h2 style="text-align: center">{{ post.name }}</h2>
+<hr>
+<p style="text-align: right">{{ post.desc }}</p>
+<hr>
+<p style="text-align: left">{{ post.content }}</p>
+<p style="text-align: right"><a href="{% url 'update' post.pk %}">Редактировать</a></p>
+{% endblock %}

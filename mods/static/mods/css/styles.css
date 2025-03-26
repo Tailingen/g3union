@@ -1,0 +1,41 @@
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Задание полной высоты для body */
+        }
+        header {
+            background-color: #4CAF50; /* Цвет фона шапки */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            height: 70px;
+        }
+
+        header li {
+            margin: 5px
+        }
+        .container {
+            display: flex;
+            flex: 1; /* Занимает все доступное пространство */
+        }
+        .sidebar {
+            width: 300px; /* Ширина бокового блока */
+            background-color: DarkGray; /* Цвет фона бокового блока */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Тень бокового блока */
+            height: 100%; /* Задание высоты 100% для занятой области */
+        }
+        .main {
+            flex: 1; /* Основной блок занимает оставшееся пространство */
+            padding: 20px;
+            background-color: #fff; /* Цвет фона основного блока */
+        }
+        footer {
+            background-color: #333; /* Цвет фона футера */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            height: 50px;
+        }
