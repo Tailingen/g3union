@@ -1,9 +1,11 @@
 {% extends 'mods/base.html' %}
 {% block content %}
 {% for p in posts %}
+{% if p.is_published %}
 <p><a href="{% url 'show_post' p.slug %}">{{ p.name }}</a></p>
 <p>{{ p.content|truncatewords:40 }}</p>
 <hr>
+{% endif %}
 {% endfor %}
 
    {% if page_obj.has_previous %}
