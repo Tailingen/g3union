@@ -1,4 +1,5 @@
 {% load static %}
+{% load modstags %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -25,9 +26,10 @@
 <div class="container">
     <div class="sidebar">
         {% block leftbar %}
-        {% for c in cats %}
-        <p>{{ c.title }}</p>
-        {% endfor %}
+        <ul>
+            <li>Все категории</li>
+            {% show_categoryes %}
+        </ul>
         {% endblock %}
     </div>
     <div class="main">

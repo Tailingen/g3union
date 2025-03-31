@@ -47,6 +47,6 @@ class ShowCategory(ListView):
     paginate_by = 10
     extra_context = {'title': 'статьи по категориям'}
 
-    def get_queryset(self):
-        return Mod.objects.filter()
+#    def get_queryset(self):
+#        return Mod.objects.filter()
 
