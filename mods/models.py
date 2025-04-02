@@ -2,16 +2,28 @@ from django.db import models
 from django.urls import reverse
 
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_published=Mod.Status.PUBLISHED)
+
+
 class Mod(models.Model):
+    class Status(models.IntegerChoices):
+        DRAFT = 0, 'Черновик'
+        PUBLISHED = 1, 'Опубликовать'
+
     slug = models.SlugField(max_length=100, unique=True)
     name = models.CharField(max_length=100, unique=True)
     desc = models.TextField(blank=True)
     content = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='mods')
     tags = models.ManyToManyField('Tag', blank=True)
+
+    objects = models.Manager()
+    published = PublishedManager()
 
     class Meta:
         ordering = ['-created']
