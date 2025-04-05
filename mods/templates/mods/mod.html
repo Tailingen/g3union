@@ -6,4 +6,5 @@
 <hr>
 <p style="text-align: left">{{ post.content|linebreaks }}</p>
 <p style="text-align: right"><a href="{% url 'update' post.pk %}">Редактировать</a></p>
+<p style="text-align: right"><a href="{% url 'delete' post.pk %}">Удалить</a></p>
 {% endblock %}

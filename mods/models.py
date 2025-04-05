@@ -26,15 +26,21 @@ class Mod(models.Model):
     published = PublishedManager()
 
     class Meta:
+        verbose_name = 'Моды'
+        verbose_name_plural = 'Моды'
         ordering = ['-created']
         indexes = [models.Index(fields=['-created'])]
 
     def get_absolute_url(self):
-        return reverse('show_post', kwargs={'slug': self.slug})
+        return reverse('show_post', kwargs={'post_slug': self.slug})
 
 class Category(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
+
+    class Meta:
+        verbose_name = 'Категории'
+        verbose_name_plural = 'Категории'
 
     def __str__(self):
         return self.title
@@ -50,3 +56,5 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.title
+
+tags_list = Tag.objects.all()
