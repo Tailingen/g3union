@@ -18,8 +18,18 @@
     <ul style="text-align: right; font-size: 18px; padding: 5px; margin: 50px">
     <li style="display: inline-block"><strong><a href="{% url 'home' %}">На главную</a></strong></li>
     <li style="display: inline-block"><strong><a href="{% url 'about' %}">О сайте</a></strong></li>
-    <li style="display: inline-block"><strong>Вход</strong></li>
     <li style="display: inline-block"><strong><a href="{% url 'create' %}">Добавить статью</a></strong></li>
+        {% if user.is_authenticated %}
+        <li style="display: inline-block"><strong>{{ user.username }}</strong></li>
+        <li style="display: inline-block"><strong><form method="post" action="{% url 'users:logout' %}">
+    {% csrf_token %}
+    <button type="submit" style="background:none; border:none; color:#FDC073; cursor:pointer;
+					font-size: 20px; font-family: Arial;">Разлогиниться</button>
+</form></strong></li>
+        {% else %}
+        <li style="display: inline-block"><strong><a href="{% url 'users:login' %}">Вход</a></strong></li>
+        <li style="display: inline-block"><strong>Регистрация</strong></li>
+        {% endif %}
     </ul>
 </header>
 

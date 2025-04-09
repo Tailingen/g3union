@@ -49,8 +49,9 @@ class CreatePost(CreateView):
 
 class UpdatePost(UpdateView):
     model = Mod
+    form_class = ModCreateForm
     template_name = 'mods/update.html'
-    fields = ['name', 'desc', 'content', 'is_published', 'category']
+    #fields = ['name', 'desc', 'content', 'is_published', 'category']
     success_url = reverse_lazy('home')
     extra_context = {'title': 'Редактировать пост'}
 

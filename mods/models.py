@@ -45,6 +45,9 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'slug': self.slug})
+
 cats_list = Category.objects.all()
 
 def list_cat(request):
@@ -56,5 +59,8 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('tag', kwargs={'slug': self.slug})
 
 tags_list = Tag.objects.all()
